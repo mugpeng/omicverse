@@ -168,14 +168,6 @@ class Single2Spatial(object):
         sp_adata.obsm['X_spatial']=sp_adata.obs[['Cell_xcoord','Cell_ycoord']].values
         self.sp_adata=sp_adata
         return sp_adata
-        #  save df
-        os.makedirs(map_save_dir, exist_ok=True)
-        meta_dir = os.path.join(map_save_dir, f'meta_{map_save_name}_{k}.csv')
-        spot_dir = os.path.join(map_save_dir, f'data_{map_save_name}_{k}.csv')
-        df_meta.to_csv(meta_dir)
-        df_spot.to_csv(spot_dir)
-        print(f"saving result to {meta_dir} and {spot_dir}")
-        return df_meta, df_spot
     
     def spot_assess(self)->anndata.AnnData:
         """Assess the predicted spatial data
